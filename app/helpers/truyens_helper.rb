@@ -1,0 +1,2 @@
+module TruyensHelper
+end

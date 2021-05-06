@@ -1,0 +1,50 @@
+
+<%= form_with(model: truyen) do |form| %>
+  <% if truyen.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(truyen.errors.count, "error") %> prohibited this truyen from being saved:</h2>
+
+      <ul>
+        <% truyen.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+ 
+    <%= form.label :tentruyen,for:"exampleInputEmail1", class:"form-label" %>
+    <%= form.text_field :tentruyen,class:"form-control",style:"width:700px" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :mota ,for:"exampleInputEmail1", class:"form-label"%>
+    <%= form.text_field :mota,class:"form-control",style:"width:700px" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :noidung,for:"exampleInputEmail1", class:"form-label" %>
+    <%= form.text_field :noidung,class:"form-control",style:"width:700px" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :iddanhmuc,for:"exampleInputEmail1", class:"form-label" %>
+    <%= form.number_field :iddanhmuc,class:"form-control",style:"width:700px" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :thoiluong,for:"exampleInputEmail1", class:"form-label" %>
+    <%= form.text_field :thoiluong,class:"form-control",style:"width:700px" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :anh ,for:"exampleInputEmail1", class:"form-label"%>
+    <%= form.text_field :anh,class:"form-control",style:"width:700px" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:"btn btn-primary" %>
+  </div>
+<% end %>
+

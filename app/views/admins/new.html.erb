@@ -1,0 +1,67 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<h1 style="text-align:center">DANH SÁCH TRUYỆN</h1>
+<table class="table table-striped">
+    <thead>
+      <tr>      
+        <th>TÊN TRUYỆN</th>
+        <th>MÔ TẢ</th>
+        <th>NỘI DUNG</th>
+        <th>THỜI LƯỢNG</th>
+        <th></th>
+        <th></th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+    <% @truyen.each do |truyen| %>
+      <tr>
+       
+        <td><%= truyen.tentruyen %></td>
+         <td><%= truyen.mota %></td>
+         <td><%= truyen.noidung %></td>
+         
+         <td><%= truyen.thoiluong %></td>
+
+
+        <td><button type="button" class="btn btn-success" ><%= link_to 'Edit', edit_truyen_path(truyen) %></button></td>
+        <td><button type="button" class="btn btn-success"><%= link_to 'Destroy', truyen, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+      </tr>
+      <% end %>
+     
+    </tbody>
+  </table>
+
+
+
+
+  
+
+<p id="notice"><%= notice %></p>
+
+
+
+<h1 style="text-align:center">DANH SÁCH DANH MỤC</h1>
+<table class="table table-striped">
+    <thead>
+    
+      <tr>      
+        <th>ID</th>
+        <th>Tên Danh Mục</th>
+      </tr>
+    </thead>
+    <tbody>
+<% @danhmuc.each do |danhmuc| %>
+      <tr>
+      <td><%= danhmuc.id %></td>
+      <td><%= danhmuc.tendanhmuc %></td>
+     <td><button type="button" class="btn btn-success" ><%= link_to 'Edit', edit_danhmuc_path(danhmuc) %></button></td>
+     <td><button type="button" class="btn btn-success"><%= link_to 'Destroy', danhmuc, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+      </tr>
+      <% end %>
+     
+    </tbody>
+  </table>

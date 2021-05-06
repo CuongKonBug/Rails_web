@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Danhmucs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tendanhmuc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @danhmucs.each do |danhmuc| %>
+      <tr>
+        <td><%= danhmuc.tendanhmuc %></td>
+        <td><%= link_to 'Show', danhmuc %></td>
+        <td><%= link_to 'Edit', edit_danhmuc_path(danhmuc) %></td>
+        <td><%= link_to 'Destroy', danhmuc, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Danhmuc', new_danhmuc_path %>

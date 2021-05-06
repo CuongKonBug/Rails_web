@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/grid.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    link
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+</head>
+<style>
+.nav__input-search {
+  width: 600px;
+.nav__input-btn{
+    width:550px;
+    height:550px;
+}
+}
+</style>
+<body>
+    <div class="main">
+   
+        <input type="checkbox" hidden name="" id="nav-mobile-bars"> 
+        <label for="nav-mobile-bars" class="overplay"></label> 
+        <label for="nav-mobile-bars" class="nav-mobile">
+            <ul class="nav-mobile__list">
+                <li class="nav-mobile__item">
+                    <a href="#" class="nav-mobile__link nav__link-mobile--active white__color">Phim Mới</a>
+                </li>
+                <li class="nav-mobile__item">
+                    <a href="#" class="nav-mobile__link">Phim Lẻ</a>
+                </li>
+                <li class="nav-mobile__item">
+                    <a href="#" class="nav-mobile__link">Phim Bộ</a>
+                </li>
+                <li class="nav-mobile__item">
+                    <a href="users/new" class="nav-mobile__link">Đăng Kí</a>
+                </li>
+                <li class="nav-mobile__item">
+                    <a href="#" class="nav-mobile__link">Phim Chiếuss </a>
+                </li>
+            </ul>
+        </label> 
+        <div class="header">
+            <div class="full-color">
+                <div class="grid wide">
+                    <div class="nav">
+                        <div class="nav__logo">
+                            <a href="" class="nav__logo-link">
+                             <img src="/assets/logo.jpg" alt="" class="logo-small">
+                            </a>
+                        </div>
+                        <label for="nav-mobile-bars" class="nav-bar-mobile">
+                            <i class="fas fa-bars"></i>
+                        </label>   
+                        <div class="nav__flim hide-on-tablet-mobile">
+                            <ul class="nav__list">
+                            <% @danhmucs.each do |danhmuc| %>
+                                <li class="nav__item">
+                                    <a href="#" class="nav__link"><%= danhmuc.tendanhmuc %></a>
+                                </li>
+                                <% end %>
+                                <li class="nav__item">
+                                    <a href="users/new" class="nav__link">Đăng Kí</a>
+                                </li>
+                                <li class="nav__item">
+                                    <a href="/login" class="nav__link">Đăng Nhập</a>
+                                </li>
+                              
+
+                                     <li class="nav__item">
+                                <a href="/admins" class="nav__link">Quản Lí</a>
+                               
+                   
+                                </li>
+                                <li class="nav__item">
+
+
+                                <%= link_to "Logout", logout_path, method: :delete, class:'nav__link' %> 
+                                    
+                                </li>
+                               
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <div class="input-fullcolor">
+                    <div class="nav__input">                  
+                        <%= form_tag(truyens_path, method: :get) do %>
+                            <%= text_field_tag :term, params[:term] , placeholder:"Bạn muốn tìm phim gì?",class:"nav__input-search" %>
+                            
+                            <%= submit_tag 'Search',class:"nav__input-btn" %>
+
+                          <% end %>
+                    </div>
+            </div>
+        </div> 
+        <div class="container">
+            <div class="grid wide">
+                <div class="category">
+                    <h3 class="category__heading">TRUYỆN HAY</h3>
+                    <div class="category__mobile">
+                        <div class="category__heading-2-mobile link--active">
+                            <a href="" class="category__heading-2-link-mobile link--active">Tất cả Truyện</a>
+                        </div>
+                        
+                    </div>
+                    <div class="category__popular hide-on-mobile">
+                        <div class="category__heading-2 link--active">
+                            <a href="" class="category__heading-2-link link--active">Tất cả Truyện</a>
+                        </div>
+                        
+                        <div class="category__heading-2">
+                            <a href="" class="category__heading-2-link">Phim mới</a>
+                        </div>
+                    </div>
+                 
+                </div>
+                <div class="row mobile-list">
+                <p id="notice"><%= notice %></p>
+                <% @truyens.each do |truyen| %>
+                    <div class="col l-2-4 m-4 c-12">
+                        <div class="container__flim">
+                            <a href="" class="list__phim-img">
+                                <img src="<%= truyen.anh %>" alt="jj" class="container__flim-img">
+                            </a>
+                            <div class="container__flim-img-rating">
+                                <p>9.0</p>
+                            </div>
+                            <div class="container__flim-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <a href="" class="heading-phim__link">
+                                <h3 class="container__flim-heading"><%= truyen.tentruyen %></h3>
+                            </a>
+                           <i class="fas fa-award container__flim-desc-icon"></i> <span><%= link_to 'Show', truyen %></span></a>
+                        </div>
+                    </div>
+                    <% end %>
+                    
+                   
+                            
+                            
+                   
+                   
+                    
+                   
+                   
+                    <div class="col l-2-4 m-4 c-12 hide-on-tablet-mobile">
+                    </div>
+                </div>
+                <div class="heading-second">
+                    <h3 class="category__heading">Truyện Việt Nam</h3>
+                </div>
+                <div class="row phim-second">
+                <% @truyens1.each do |truyen| %>
+                    <div class="col l-2-4 m-4 c-12">
+                        <div class="container__flim">
+                            <a href="" class="list__phim-container">
+                                <img src="<%= truyen.anh %>" alt="" class="container__flim-img">
+                            </a>
+                            <div class="container__flim-img-rating">
+                                <p>9.0</p>
+                            </div>
+                            <div class="container__flim-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <a href="" class="heading-phim__link">
+                                <h3 class="container__flim-heading"><%= truyen.tentruyen %></h3>
+                            </a>
+                            <i class="fas fa-award container__flim-desc-icon"></i> <span><%= link_to 'Show', truyen %></span></a>
+
+                        </div>
+                    </div>
+                    <% end %>
+                   
+                </div>
+                <div class="heading-second">
+                    <h3 class="category__heading">TRuyện nước ngoài</h3>
+                </div>
+                <div class="row phim-second">
+                <% @truyens2.each do |truyen| %>
+                    <div class="col l-2-4 m-4 c-12">
+                        <div class="container__flim">
+                            <a href="" class="list__phim-img">
+                                <img src="<%= truyen.anh %>" alt="" class="container__flim-img">
+                            </a>
+                            <div class="container__flim-img-rating">
+                                <p>9.0</p>
+                            </div>
+                            <div class="container__flim-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <a href="" class="heading-phim__link">
+                                <h3 class="container__flim-heading"><%= truyen.tentruyen %></h3>
+                            </a>
+                            <i class="fas fa-award container__flim-desc-icon"></i> <span><%= link_to 'Show', truyen %></span></a>
+
+                        </div>
+                    </div>
+                    <% end %>
+                    
+                   
+                    
+                    
+                </div>
+                
+        <div class="footer">
+            <div class="grid wide">
+                <div class="row">
+                    <div class="col l-4 m-4 c-12">
+                       <ul class="footer__list">
+                           <li class="footer__item">
+                               <a href="" class="footer__link">Liên hệ</a>
+                           </li>
+                           <li class="footer__item">
+                                <a href="" class="footer__link">Giới thiệu</a>
+                            </li>
+                            <li class="footer__item">
+                                <a href="" class="footer__link">Bản quyền</a>
+                            </li>
+                           </li>
+                       </ul>
+                    </div>
+                    <div class="col l-4 m-4 c-12">
+                        <ul class="footer__list">
+                            <li class="footer__item">
+                                <a href="" class="footer__link">Phim Lẻ</a>
+                            </li>
+                            <li class="footer__item">
+                                 <a href="" class="footer__link">Phim Bộ</a>
+                             </li>
+                             <li class="footer__item">
+                                 <a href="" class="footer__link">Phim Chiếu Rạp</a>
+                             </li>
+                            </li>
+                        </ul>
+                     </div>
+                     <div class="col l-4 m-4 c-12">
+                        <ul class="footer__list">
+                            <li class="footer__item">
+                                <a href="" class="footer__link"><i class="fab fa-facebook-f icon-sosical"></i>Facebook</a>
+                            </li>
+                            <li class="footer__item">
+                                 <a href="" class="footer__link"><i class="fab fa-twitter icon-sosical"></i>Twiter</a>
+                             </li>
+                             <li class="footer__item">
+                                 <a href="" class="footer__link"><i class="fab fa-instagram icon-sosical"></i>Instagram</a>
+                             </li>
+                            </li>
+                        </ul>
+                     </div>
+                     <div class="col l-8 m-12 c-12">
+                         <div class="the-copy-right-footer">
+                             <h3 class="the-copy-right-footer-heading">Code By <a href="" class="the-copy-right-footer-link">An Nguyen</a></h3>
+                         </div>
+                     </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</body>
+</html>
